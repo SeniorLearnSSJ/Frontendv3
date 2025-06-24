@@ -23,6 +23,7 @@ import { StyleSheet } from "react-native";
 import { styles } from "../styles";
 import { MemberBulletinCategory } from "../types";
 import { API_URL } from "../apiConfig";
+import {apiConfig} from "../apiConfig.js";
 /**
  * Adds the screen to navigation stack.
  */
@@ -82,7 +83,7 @@ export default function AddScreen({ navigation }: AddScreenProps) {
     console.log("Payload JSON:", JSON.stringify(newBulletin));
 
     try {
-      const response = await fetch(API_URL, {
+      const response = await fetch(`${apiConfig.baseURL}${apiConfig.endpoints.member}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -24,7 +24,7 @@ import { FontContext } from "../Context/fontContext";
 import { StyleSheet } from "react-native";
 import { styles } from "../styles";
 import { API_URL } from "../apiConfig";
-
+import {apiConfig} from "../apiConfig.js";
 /**
  * Adds the screen to navigation.
  */
@@ -65,7 +65,7 @@ const OfficialBulletinsSummary: React.FC<Props> = ({ navigation }) => {
   useEffect(() => {
     const getItems = async () => {
       try {
-        const response = await fetch(API_BASE, {
+        const response = await fetch(`${apiConfig.baseURL}${apiConfig.endpoints.official}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

@@ -22,7 +22,7 @@ import { FontContext } from "../Context/fontContext";
 import { StyleSheet } from "react-native";
 import { styles } from "../styles";
 import { API_URL } from "../apiConfig";
-
+import {apiConfig} from "../apiConfig.js";
 /**
  * This makes the URL readable and easier to handle
  */
@@ -65,7 +65,7 @@ export default function MemberBulletinDetailsScreen({
    */
   const deleteItem = async (idToDelete: string) => {
     try {
-      const response = await fetch(`${API_BASE}/${idToDelete}`, {
+      const response = await fetch(`${apiConfig.baseURL}${apiConfig.endpoints.member}/${idToDelete}`, {
         method: "DELETE",
 
         headers: {

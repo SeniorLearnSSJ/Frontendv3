@@ -25,7 +25,7 @@ import { FontContext } from "../Context/fontContext";
 import { styles } from "../styles";
 import { Picker } from "@react-native-picker/picker";
 import {API_URL} from "../apiConfig";
-
+import {apiConfig} from "../apiConfig.js";
 /**
  * This adds the screen to the navigation stack.
  */
@@ -35,6 +35,7 @@ type EditScreenProps = NativeStackScreenProps<RootStackParamList, "Edit">;
 /**
  * This assigns a readable constant to the API.
  */
+
 const API_BASE = `${API_URL}/api/bulletins/member`;
 
 /**
@@ -94,7 +95,7 @@ export default function EditScreen({ navigation, route }: EditScreenProps) {
      * At this point, the handleSubmit function retrieves the data at the API and updates it using the saveBulletins function.
      */
     try {
-      const response = await fetch(`${API_BASE}/${updatedBulletin.id}`, {
+      const response = await fetch(`${apiConfig.baseURL}${apiConfig.endpoints.member}/${updatedBulletin.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -126,7 +127,7 @@ export default function EditScreen({ navigation, route }: EditScreenProps) {
 
   const deleteItem = async (idToDelete: string) => {
     try {
-      const response = await fetch(`${API_BASE}/${idToDelete}`, {
+      const response = await fetch(`${apiConfig.baseURL}${apiConfig.endpoints.member}/${idToDelete}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,

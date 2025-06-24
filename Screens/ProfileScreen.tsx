@@ -24,7 +24,7 @@ import { FontContext } from "../Context/fontContext";
 import { StyleSheet } from "react-native";
 import { styles } from "../styles";
 import { API_URL } from "../apiConfig";
-
+import {apiConfig} from "../apiConfig.js";
 /**
  * Adds screen to navigation stack.
  */
@@ -33,6 +33,7 @@ type ProfileScreenProps = NativeStackScreenProps<RootStackParamList, "Profile">;
 /**
  * Makes URL readable.
  */
+
 
 const API_BASE = `${API_URL}/api/profile`;
 
@@ -85,7 +86,7 @@ export default function ProfileScreen({ navigation }: ProfileScreenProps) {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await fetch(API_BASE, {
+        const response = await fetch(`${apiConfig.baseURL}${apiConfig.endpoints.profile}`, {
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
@@ -139,7 +140,7 @@ export default function ProfileScreen({ navigation }: ProfileScreenProps) {
     }
 
     try {
-      const response = await fetch(API_BASE, {
+      const response = await fetch(`${apiConfig.baseURL}${apiConfig.endpoints.profile}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

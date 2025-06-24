@@ -31,6 +31,7 @@ import { enableFreeze, enableScreens } from "react-native-screens";
 import { StyleSheet } from "react-native";
 import { styles } from "../styles";
 import { API_URL } from "../apiConfig";
+import {apiConfig} from "../apiConfig.js";
 
 /**
  * Adds screen to navigation stack.
@@ -102,7 +103,8 @@ export default function SettingsScreen({ navigation }: SettingsScreenProps) {
 
   const getSettings = async () => {
     try {
-      const response = await fetch(Settings_API_URL, {
+      
+      const response = await fetch(`${apiConfig.baseURL}${apiConfig.endpoints.settings}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -143,7 +145,7 @@ export default function SettingsScreen({ navigation }: SettingsScreenProps) {
     enableNotifications: boolean
   ) => {
     try {
-      const response = await fetch(Settings_API_URL, {
+      const response = await fetch(`${apiConfig.baseURL}${apiConfig.endpoints.settings}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

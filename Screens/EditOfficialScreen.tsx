@@ -22,6 +22,7 @@ import { StyleSheet } from "react-native";
 import { ScrollView } from "react-native";
 import { styles } from "../styles";
 import { API_URL } from "../apiConfig";
+import {apiConfig} from "../apiConfig.js";
 
 /**
  * This adds the screen to the navigation stack.
@@ -35,6 +36,7 @@ type EditOfficialScreenProps = NativeStackScreenProps<
 /**
  * This makes the URL readable.
  */
+
 const API_BASE = `${API_URL}/api/bulletins/official`;
 
 /**
@@ -82,7 +84,7 @@ export default function EditOfficialScreen({
     };
 
     try {
-      const response = await fetch(`${API_BASE}/${updatedBulletin.id}`, {
+      const response = await fetch(`${apiConfig.baseURL}${apiConfig.endpoints.official}/${updatedBulletin.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -112,7 +114,7 @@ export default function EditOfficialScreen({
    */
   const deleteItem = async (id: string) => {
     try {
-      const response = await fetch(`${API_BASE}/${id}`, {
+      const response = await fetch(`${apiConfig.baseURL}${apiConfig.endpoints.official}/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,

@@ -23,6 +23,7 @@ import { StyleSheet } from "react-native";
 import { styles } from "../styles";
 import axios from "axios";
 import { API_URL } from "../apiConfig";
+import {apiConfig} from "../apiConfig.js";
 /**
  * Adds screen to navigation stack.
  */
@@ -81,7 +82,7 @@ export default function RegisterScreen({ navigation }: RegisterScreenProps) {
 
     try {
       const res = await axios.post(
-        `${API_BASE}/register`,
+        `${apiConfig.baseURL}${apiConfig.endpoints.register}`,
         {
           username,
           password,

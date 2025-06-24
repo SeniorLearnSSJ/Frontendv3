@@ -23,12 +23,14 @@ import { StyleSheet } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { styles } from "../styles";
 import { API_URL } from "../apiConfig";
+import {apiConfig} from "../apiConfig.js";
 
 /**
  * This constant sets the backend API to a more readable format.
  */
 //const API_URL = "http://172.19.159.72:5143/api/bulletins/official";
 const API_BASE = `${API_URL}/api/bulletins/official`;
+
 /**
  * This code adds the screen to the navigation stack.
  */
@@ -81,7 +83,7 @@ export default function AddOfficialScreen({
         headers["Authorization"] = "Bearer " + token;
       }
 
-      const response = await fetch(API_BASE, {
+      const response = await fetch(`${apiConfig.baseURL}${apiConfig.endpoints.official}`, {
         method: "POST",
         headers: headers,
         body: JSON.stringify(newBulletin),

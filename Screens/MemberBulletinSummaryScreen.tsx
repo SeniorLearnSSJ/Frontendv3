@@ -30,6 +30,7 @@ import { useAuth } from "../Context/AuthContext";
 import { MemberBulletinCategory } from "../types";
 import { styles } from "../styles";
 import { API_URL } from "../apiConfig";
+import {apiConfig} from "../apiConfig.js";
 /**
  * This enumerable mapper maps the enums from string to number.
  */
@@ -136,7 +137,7 @@ const MemberBulletinSummary: React.FC<Props> = ({ navigation }) => {
 
         try {
           //const response = await fetch(API_URL);
-          const response = await fetch(API_BASE, {
+          const response = await fetch(`${apiConfig.baseURL}${apiConfig.endpoints.member}`, {
             method: "GET",
             headers: {
               "Content-Type": "application/json",

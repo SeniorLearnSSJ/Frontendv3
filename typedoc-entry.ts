@@ -3,7 +3,7 @@ export * from "./Context/context";
 export * from "./Context/fontContext";
 export * from "./Screens/AddOfficialScreen";
 export * from "./Screens/AddScreen";
-export * from "./Screens/Atrium";
+
 export * from "./Screens/BulletinChoiceScreen";
 export * from "./Screens/EditOfficialScreen";
 export * from "./Screens/EditScreen";

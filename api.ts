@@ -3,6 +3,7 @@
 
 import axios from "axios";
 import { API_URL } from "./apiConfig";
+import {apiConfig} from "./apiConfig.js";
 
 
 /**
@@ -26,7 +27,8 @@ export async function ApiLogin(
   password: string
 ): Promise<{ success: boolean; token?: string; role?: string; message?: string }> {
   try {
-    const response = await api.post(`${API_URL}/api/auth/sign-in`, {
+    
+    const response = await api.post(`${apiConfig.baseURL}${apiConfig.endpoints.login}`, {
       username,
       password,
     });
